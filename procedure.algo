@@ -1,0 +1,49 @@
+// Dot_Product Procedure
+
+PROCEDURE dot_product(VAR v1:ARRAY_OF FLOAT , VAR v2:ARRAY_OF FLOAT , VAR ps:FLOAT)
+VAR
+        i:INTEGER; //variable indice de boucle pour
+        ps : FLOAT; //variable cumul resultat
+BEGIN
+    IF (v1.length <> v2.length) THEN
+        Write(" Erreur Impossible de calculer le produit scalaire ");
+    ELSE
+        ps := 0.0;
+        FOR i FROM 0 TO v1.length-1 STEP 1  DO
+        ps := ps + v1[i] * v2[i] ;
+        END_FOR
+    END_IF
+    Write(ps);
+END
+
+ALGORITHM dot_product_algo
+VAR
+    V1 , V2 : ARRAY_OF FLOAT[20];  //tableau des reels 
+    i,k : INTEGER; 
+BEGIN
+   // Read the size
+   // Read the size
+    Write('"how many pairs of vectors do you want to test" :k mod 2= 0')
+    Read(k);
+   // Read elements
+    Write('V1 :')
+    FOR i FROM 0 TO k-1 STEP 1  DO
+        Read(V1[i]);
+    END_FOR
+    Write('V2:')
+    FOR j FROM i+1 TO k-1 STEP 1  DO
+        Read(V2[i]);
+    END_FOR
+
+
+    FOR i FROM 0 TO  STEP k  DO
+        FOR i FROM 1 TO k STEP 1  DO
+            dot_product( V1 , V2 );
+
+            IF (dot_product(V1 , V2) == 0) THEN
+                Write('These vectors are orthogonal');
+            END_IF
+        END_FOR   
+    END_FOR
+
+END
